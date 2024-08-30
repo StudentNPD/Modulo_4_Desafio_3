@@ -1,39 +1,60 @@
-class Producto:
-    def __init__(self, nombre, precio, stock):
-        self.nombre = nombre
-        self.precio = precio
-        self.stock = stock
+import producto
+from abc import ABC, abstractmethod
 
-#metodos getter nombre, precio, stock
-    #@property
-    def get_nombre(self):
-        return self.__nombre
+class Tienda(ABC):
+    def __init__(self, nombre, costo_delivery):
+        self._nombre = nombre
+        self._costo_delivery = costo_delivery
+        self._lista_productos = []
 
-    def get_precio(self):
-        return self.__precio
+    @property
+    def nombre(self):
+        return self._nombre
 
-    def get_stock(self):
-        return self.__stock
+    @property
+    def costo_delivery(self):
+        return self._costo_delivery
 
+    @abstractmethod
+    def ingresar_producto(self):
+        pass
+    @abstractmethod
+    def listar_productos(self):
+        pass
 
-#metodos setter para stock con validacion para que no sea stock negativo
-
-    def set_stock(self, valor):
-        self.validar_stock(valor)
-        self.__stock = valor
-
-
-
-# FUNCIONES DE VALIDACION (las hice y no se si se vayan a usar al menos de esta forma)
-    def validar_nombre(self, valor):
-        if not isinstance(valor, str):
-            raise ValueError("El nombre debe ser una cadena de caracteres")
+    @abstractmethod
+    def realizar_venta(self):
+        pass
     
-    def validar_precio(self, valor):
-        if not isinstance(valor, int) or valor < 0:
-            raise ValueError("El precio debe ser un entero positivo")
+    
+class Restaurante(Tienda):
+    def ingresar_producto(self):
+        nombre = input("Ingrese el nombre del producto: ")
+        precio = float(input("Ingrese el precio del producto: "))
+        producto = producto(nombre, precio, 0)
+
+        for prod in self._lista_productos:
+            if prod == producto:
+                print("El producto ya existe y no se modifica el stock.")
+                return
+
+        self._lista_productos.append(producto)
+        print("Producto ingresado exitosamente.")
+
+    def listar_productos(self):
+        cadena="" 
+        for prod in self._lista_productos
+            cadena=cadena + "\n" +"Producto: " + prod.nombre +", Precio: $" + prod.precio 
+        return cadena
         
-    def validar_stock(self, valor):
-        if not isinstance(valor, int) or valor < 0:
-            raise ValueError("El stock debe ser un entero positivo")
+    def realizar_venta(self):
+        nombre = input("Ingrese el nombre del producto a vender: ")
+        cantidad = int(input("Ingrese la cantidad a vender: "))
+
+        for prod in self._lista_productos:
+            if prod.nombre == nombre:
+                print("Venta realizada.")
+                return
+        print("Producto no encontrado.")
+
 
