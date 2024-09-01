@@ -7,13 +7,13 @@ class Producto:
 #metodos getter nombre, precio, stock
     #@property
     def get_nombre(self):
-        return self.__nombre
+        return self.nombre # __nombre. No esta definido así en constructor por eso no lo pilla
 
     def get_precio(self):
-        return self.__precio
+        return self.precio # __precio. No esta definido así en constructor por eso no lo pilla
 
     def get_stock(self):
-        return self.__stock
+        return self.stock # __stock. No esta definido así en constructor por eso no lo pilla
 
 
 #metodos setter para stock con validacion para que no sea stock negativo
