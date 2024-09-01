@@ -1,4 +1,4 @@
-import producto
+from producto import Producto # agregado
 from abc import ABC, abstractmethod
 
 class Tienda(ABC):
@@ -31,7 +31,7 @@ class Restaurante(Tienda):
     def ingresar_producto(self):
         nombre = input("Ingrese el nombre del producto: ")
         precio = float(input("Ingrese el precio del producto: "))
-        producto = producto(nombre, precio, 0)
+        producto = Producto(nombre, precio, 0) # producto estaba en  minuscula y por eso no lo tomaba
 
         for prod in self._lista_productos:
             if prod == producto:
@@ -44,7 +44,7 @@ class Restaurante(Tienda):
     def listar_productos(self):
         cadena="" 
         for prod in self._lista_productos:
-            cadena=cadena + "\n" +"Producto: " + prod.nombre +", Precio: $" + prod.precio 
+            cadena=cadena + "\n" +"Producto: " + prod.nombre +", Precio: $" + str(prod.precio)  #prod.precio. No concatena por que es un int 
         return cadena
         
     def realizar_venta(self):
@@ -62,7 +62,7 @@ class Farmacia(Tienda):
         nombre = input("Ingrese el nombre del producto: ")
         precio = float(input("Ingrese el precio del producto: "))
         stock = int(input("Ingrese el stock del producto: "))
-        producto = producto(nombre, precio, stock)
+        producto = Producto(nombre, precio, stock) # producto estaba en  minuscula y por eso no lo tomaba
 
         for prod in self._lista_productos:
             if prod == producto:
@@ -76,7 +76,7 @@ class Farmacia(Tienda):
     def listar_productos(self):
         cadena="" 
         for prod in self._lista_productos:
-            cadena=cadena + "\n" +"Producto: " + prod.nombre +", Precio: $" + prod.precio 
+            cadena=cadena + "\n" +"Producto: " + prod.nombre +", Precio: $" + str(prod.precio)  #prod.precio. No concatena por que es un int 
             if prod.precio > 15000:
                 cadena=cadena + '(Envío gratis al solicitar este producto) '
             else:
@@ -92,8 +92,8 @@ class Farmacia(Tienda):
             return
 
         for prod in self._lista_productos:
-            if prod.nombre == nombre:
-                vendida = prod - cantidad
+            if prod.get_nombre() == nombre:  # nombre sin el get no ocupa los getter de producto.py
+                vendida = prod.get_stock() - cantidad # prod sin el get no ocupa los getter de producto.py
                 if vendida > 0:
                     print(f"Venta realizada. Cantidad vendida: {vendida}")
                 else:
