@@ -102,3 +102,43 @@ class Farmacia(Tienda):
         print("Producto no encontrado.")
 
 
+
+class Supermercado(Tienda):
+    def ingresar_producto(self):
+        nombre = input("Ingrese el nombre del producto: ")
+        precio = float(input("Ingrese el precio del producto: "))
+        stock = int(input("Ingrese el stock del producto: "))
+        producto = producto(nombre, precio, stock)
+
+        for prod in self._lista_productos:
+            if prod == producto:
+                prod + stock
+                print("Stock actualizado.")
+                return
+
+        self._lista_productos.append(producto)
+        print("Producto ingresado exitosamente.")
+
+    def listar_productos(self):
+        cadena="" 
+        for prod in self._lista_productos:
+            cadena=cadena + "\n" +"Producto: " + prod.nombre +", Precio: $" + str(prod.precio) +," Stock: " + int(prod.stock) 
+            if prod.stock < 10 :
+                cadena=cadena + '(Pocos productos disponibles)'
+            else:
+                cadena=cadena +''
+        return cadena
+        
+    def realizar_venta(self):
+        nombre = input("Ingrese el nombre del producto a vender: ")
+        cantidad = int(input("Ingrese la cantidad a vender: "))
+
+        for prod in self._lista_productos:
+            if prod.nombre == nombre:
+                vendida = prod - cantidad
+                if vendida > 0:
+                    print(f"Venta realizada. Cantidad vendida: {vendida}")
+                else:
+                    print("Stock insuficiente.")
+                return
+        print("Producto no encontrado.")
