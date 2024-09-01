@@ -122,7 +122,7 @@ class Supermercado(Tienda):
     def listar_productos(self):
         cadena="" 
         for prod in self._lista_productos:
-            cadena=cadena + "\n" +"Producto: " + prod.nombre +", Precio: $" + str(prod.precio) +," Stock: " + int(prod.stock) 
+            cadena=cadena + "\n" +"Producto: " + prod.nombre +", Precio: $" + str(prod.precio) +", Stock: " + int(prod.stock) 
             if prod.stock < 10 :
                 cadena=cadena + '(Pocos productos disponibles)'
             else:
