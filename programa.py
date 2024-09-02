@@ -1,4 +1,4 @@
-from tienda import Tienda, Farmacia, Restaurante #,Supermercado
+from tienda import Tienda, Farmacia, Restaurante, Supermercado
 
 tipo_tienda = int(input("Ingrese el tipo de tienda: \n1)Supermercado\n2)Farmacia\n3)Restaurante\n"))
 nombre_tienda = input("Ingrese el nombre de la tienda:\n")
@@ -7,7 +7,6 @@ delivery = input("Ingrese costo de delivery:\n")
 mi_tienda = Tienda
 
 if tipo_tienda == 1:
-    print("Supermercado")
     mi_tienda = Supermercado(nombre_tienda,delivery)
 elif tipo_tienda == 2:
     mi_tienda = Farmacia(nombre_tienda,delivery)
