@@ -1,4 +1,4 @@
-# Modulo_4_Desafio_3
+# Módulo 4  - Desafío Interacciones entre objetos
 
 Este proyecto consiste en el desarrollo de un backend para una aplicación de compra y reparto de productos, utilizando Python y el paradigma de programación orientada a objetos. Como primer prototipo, se ha implementado una aplicación de consola donde los valores se ingresan mediante `input`.
 
