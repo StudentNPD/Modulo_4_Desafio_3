@@ -57,6 +57,12 @@ Para ejecutar el programa, sigue las instrucciones según tu sistema operativo:
 ```bash
 python programa.py
 ```
+
+### Linux
+
+```bash
+python3 programa.py
+```
 ------------------------------------------
 ## Colaboradores
 - [Francisco Colomer](https://github.com/Cy5k0) 
