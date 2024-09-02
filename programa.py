@@ -8,7 +8,7 @@ mi_tienda = Tienda
 
 if tipo_tienda == 1:
     print("Supermercado")
-    #mi_tienda = Supermercado(nombre_tienda,delivery)
+    mi_tienda = Supermercado(nombre_tienda,delivery)
 elif tipo_tienda == 2:
     mi_tienda = Farmacia(nombre_tienda,delivery)
 elif tipo_tienda == 3:
