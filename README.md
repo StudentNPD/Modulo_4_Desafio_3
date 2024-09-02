@@ -1,46 +1,62 @@
 # Modulo_4_Desafio_3
 
-Te encuentras participando de un proyecto de emprendimiento que consiste en una
-aplicación móvil de compra y reparto de productos. El equipo ha decidido hacer el backend
-de la aplicación utilizando Python y el paradigma orientado a objetos. Para el primer prototipo
-de entrega, se solicita realizar una aplicación de consola en Python, donde los ingresos de
-valores se hagan mediante input.
-El equipo te ha solicitado diseñar e implementar la arquitectura de clases que involucra a la
-entidad principal “Tienda”. Estas son las consideraciones que se deben tener en cuenta
-respecto de las tiendas:
-● Existen por el momento 3 tipos de tienda (en el futuro podría haber más), los cuales
-son: “Restaurante”, “Supermercado” y “Farmacia”.
-● Todas las tiendas deben poder ingresar un producto, listar los productos existentes, y
-realizar ventas.
-● Cada tienda creada, independiente de su tipo, posee un nombre, un listado de
-productos y un costo de delivery. Al momento de crear una nueva tienda, se debe
-solicitar el nombre y el costo de delivery (todas las tiendas se crean inicialmente sin
-productos). En una tienda ya existente, no se puede modificar el nombre ni el costo de
-delivery, pero sí se puede modificar los productos (mediante el ingreso de un producto,
-o mediante la realización de ventas).
-● Los productos tienen un nombre, un precio y un stock. Los 3 valores se deben solicitar
-al momento de crear un producto nuevo, pero si no se indica stock, se asume que es
-1. No se puede modificar el nombre ni el precio de un producto, solo su stock. Si se
-intenta modificar el stock por un valor menor a 0, se debe asignar 0 en su lugar. De
-cada producto se puede obtener su nombre, su precio o su stock.
+Este proyecto consiste en el desarrollo de un backend para una aplicación de compra y reparto de productos, utilizando Python y el paradigma de programación orientada a objetos. Como primer prototipo, se ha implementado una aplicación de consola donde los valores se ingresan mediante `input`.
 
-------------------------------------------
+## Descripción del Proyecto
+
+El objetivo de este proyecto es diseñar e implementar la arquitectura de clases para la entidad principal "Tienda". Actualmente, se han implementado tres tipos de tiendas: **Restaurante**, **Supermercado**, y **Farmacia**. Cada tienda posee un nombre, un listado de productos, y un costo de delivery, y ofrece funcionalidades para ingresar productos, listar productos existentes, y realizar ventas.
+
+### Características de las Tiendas
+
+- **Restaurante**: Permite ingresar productos, listarlos, y realizar ventas sin restricciones de stock.
+- **Supermercado**: Maneja productos con restricciones de stock y avisa cuando el stock es bajo.
+- **Farmacia**: Maneja productos con restricciones de stock, permite venta de hasta 3 unidades por producto, y ofrece envío gratis para productos con un precio mayor a 15,000.
+
+## Estructura del Proyecto
+
+### Archivos Principales
+
+1. **`programa.py`**:
+   - Contiene el flujo principal del programa, manejando la creación de tiendas y la interacción del usuario con las opciones de listar productos, ingresar productos, y realizar ventas.
+
+2. **`producto.py`**:
+   - Define la clase `Producto` y contiene métodos para gestionar los atributos de un producto, como nombre, precio, y stock.
+   - Métodos principales:
+     - `get_nombre()`: Retorna el nombre del producto.
+     - `get_precio()`: Retorna el precio del producto.
+     - `get_stock()`: Retorna el stock disponible del producto.
+     - `set_stock(valor)`: Modifica el stock del producto.
+     - `validar_nombre(valor)`, `validar_precio(valor)`, `validar_stock(valor)`: Validan los valores ingresados para nombre, precio y stock respectivamente.
+
+3. **`tienda.py`**:
+   - Define la clase abstracta `Tienda` y las clases concretas `Restaurante`, `Supermercado`, y `Farmacia`.
+   - Métodos principales en `Tienda`:
+     - `ingresar_producto()`: Método abstracto para ingresar productos a la tienda.
+     - `listar_productos()`: Método abstracto para listar productos disponibles.
+     - `realizar_venta()`: Método abstracto para realizar una venta.
+   - Las subclases implementan los métodos para su tipo específico de tienda, gestionando las particularidades de los productos y las ventas.
+
+### Variables Principales
+
+- **`nombre`** (str): Nombre de la tienda.
+- **`costo_delivery`** (float): Costo de servicio de entrega.
+- **`_lista_productos`** (list): Lista de productos disponibles en la tienda.
+- **`Producto`** (class): Clase que define los productos, con atributos `nombre`, `precio`, y `stock`.
 
 ## Prerequisitos
 
-- Sistema Operativos: Windows 10, 11, Linux, iOS
-- Python 3.12
+- **Sistema Operativo**: Windows 10/11, Linux, macOS
+- **Python**: Versión 3.12
 
 ## Ejecución
 
-***Windows***
+Para ejecutar el programa, sigue las instrucciones según tu sistema operativo:
 
-`python programa.py`
+### Windows
 
-***Linux & iOS***
-
-`python3 programa.py`
-
+```bash
+python programa.py
+```
 ------------------------------------------
 ## Colaboradores
 - [Francisco Colomer](https://github.com/Cy5k0) 
